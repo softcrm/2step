@@ -3,775 +3,491 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AISH 전문가 마스터 클래스 | 상위 1% AI 전문가 도약</title>
+    <title>AISH 전문가 마스터 클래스 | 5주 만에 상위 1%로</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* CSS Variables for consistent branding */
-        :root {
-            --primary-color: #1e40af; /* Deep Blue */
-            --secondary-color: #1e293b; /* Slate 800 */
-            --accent-color: #3b82f6; /* Blue 500 */
-            --text-main: #0f172a; /* Slate 900 */
-            --text-muted: #475569; /* Slate 600 */
-            --bg-light: #f8fafc; /* Slate 50 */
-            --white: #ffffff;
-            --transition: all 0.3s ease;
-        }
-
-        /* Base Reset */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+        
         body {
-            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-main);
-            background-color: var(--bg-light);
-            overflow-x: hidden;
+            font-family: 'Noto Sans KR', 'Inter', sans-serif;
+            scroll-behavior: smooth;
         }
-
-        a { text-decoration: none; color: inherit; }
-        ul { list-style: none; }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* 1. Hero Section */
-        .hero {
+        
+        .gradient-bg {
             background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-            color: var(--white);
-            padding: 120px 0;
-            text-align: center;
-            position: relative;
+        }
+        
+        .accent-color {
+            color: #fbbf24;
+        }
+        
+        .accent-bg {
+            background-color: #fbbf24;
         }
 
-        .hero::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
         }
 
-        .hero-tag {
-            color: var(--accent-color);
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            display: block;
+        .sticky-nav {
+            backdrop-filter: blur(10px);
+            background-color: rgba(15, 23, 42, 0.9);
         }
 
-        .hero h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            line-height: 1.2;
-            margin-bottom: 30px;
-            font-weight: 800;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #cbd5e1;
-            max-width: 800px;
-            margin: 0 auto 40px;
-        }
-
-        .hero-badges {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-bottom: 50px;
-            flex-wrap: wrap;
-        }
-
-        .badge {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-        }
-
-        .btn-primary {
-            background-color: var(--accent-color);
-            color: var(--white);
-            padding: 18px 45px;
-            border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            display: inline-block;
-            transition: var(--transition);
-            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.3);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-2px);
-        }
-
-        /* 2. Problem/Solution Section */
-        .problem-solution {
-            padding: 100px 0;
-            background-color: var(--white);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title h2 {
-            font-size: 2.2rem;
-            margin-bottom: 15px;
-        }
-
-        .section-title .underline {
-            width: 60px;
-            height: 4px;
-            background-color: var(--accent-color);
-            margin: 0 auto;
-        }
-
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 50px;
-            align-items: center;
-        }
-
-        .pain-points {
-            background-color: var(--bg-light);
-            padding: 30px;
-            border-radius: 15px;
-            border-left: 5px solid #cbd5e1;
-        }
-
-        .pain-points li {
-            margin-bottom: 15px;
-            padding-left: 25px;
-            position: relative;
-        }
-
-        .pain-points li::before {
-            content: "•";
-            color: var(--accent-color);
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-
-        .solution-box {
-            background-color: #eff6ff;
-            padding: 40px;
-            border-radius: 20px;
-            border: 1px solid #dbeafe;
-        }
-
-        .solution-box h3 {
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        /* 3. Course Info Box */
-        .info-card {
-            background-color: var(--white);
-            border-radius: 25px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
-            margin-top: -50px;
-            position: relative;
-            z-index: 10;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            overflow: hidden;
-        }
-
-        .info-item {
-            padding: 40px;
-            text-align: center;
-            border-right: 1px solid #f1f5f9;
-        }
-
-        .info-item:last-child { border-right: none; }
-
-        .info-label {
-            display: block;
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .info-value {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--secondary-color);
-        }
-
-        /* 4. Curriculum Grid */
-        .curriculum {
-            padding: 100px 0;
-        }
-
-        .curriculum-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 25px;
-        }
-
-        .session-card {
-            background-color: var(--white);
-            padding: 35px;
-            border-radius: 20px;
-            border: 1px solid #e2e8f0;
-            transition: var(--transition);
-        }
-
-        .session-card:hover {
-            border-color: var(--accent-color);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.03);
-        }
-
-        .session-num {
-            color: var(--accent-color);
-            font-weight: 700;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .session-card h4 {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-        }
-
-        .session-desc {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-        }
-
-        .term-explanation {
-            background-color: #f1f5f9;
-            padding: 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            color: #475569;
-            border-left: 3px solid var(--accent-color);
-        }
-
-        /* 5. Video Section (Added Based on User Request) */
-        .video-section {
-            padding: 100px 0;
-            background-color: var(--white);
-        }
-
-        .video-wrapper {
-            max-width: 900px;
-            margin: 0 auto;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            background-color: #000;
-        }
-
-        /* 6. Instructor Section */
-        .instructors {
-            padding: 100px 0;
-            background-color: var(--bg-light);
-        }
-
-        .instructor-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 30px;
-        }
-
-        .track-card {
-            background-color: var(--white);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-            border: 1px solid #e2e8f0;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .track-id {
-            color: var(--accent-color);
-            font-weight: 800;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-
-        .track-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--secondary-color);
-        }
-
-        .instructor-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-
-        .instructor-role {
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .tool-info {
-            margin-bottom: 20px;
-            padding: 10px 15px;
-            background-color: #f1f5f9;
-            border-radius: 8px;
-            font-size: 0.9rem;
-        }
-
-        .tool-info strong {
-            color: var(--primary-color);
-        }
-
-        .track-goal {
-            font-size: 0.95rem;
-            color: var(--text-main);
-            line-height: 1.5;
-        }
-
-        /* 7. CTA Form Section */
-        .cta-section {
-            padding: 100px 0;
-            background-color: var(--secondary-color);
-        }
-
-        .registration-box {
-            background-color: var(--white);
-            border-radius: 30px;
-            display: grid;
-            grid-template-columns: 40% 60%;
-            overflow: hidden;
-            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
-        }
-
-        .reg-info {
-            background-color: var(--primary-color);
-            color: var(--white);
-            padding: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .reg-form {
-            padding: 60px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: 700;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 14px;
-            border: 1px solid #d1d5db;
-            border-radius: 10px;
-            font-size: 1rem;
+        .form-input:focus {
+            border-color: #fbbf24;
             outline: none;
-            transition: var(--transition);
+            box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.2);
         }
 
-        .form-group input:focus {
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        /* Loading Spinner */
+        .spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0,0,0,0.1);
+            border-top-color: #000;
+            border-radius: 50%;
+            animation: spin 1s ease-in-out infinite;
         }
-
-        .checkbox-group {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 30px;
-        }
-
-        .checkbox-group input {
-            width: 20px; height: 20px;
-        }
-
-        .deadline-badge {
-            background-color: #ef4444;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 800;
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        /* Footer */
-        footer {
-            padding: 50px 0;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .grid-2, .registration-box { grid-template-columns: 1fr; }
-            .reg-info { padding: 40px; }
-            .reg-form { padding: 40px; }
-            .info-card { grid-template-columns: 1fr 1fr; }
-        }
-
-        @media (max-width: 600px) {
-            .info-card { grid-template-columns: 1fr; }
-            .hero { padding: 80px 0; }
-        }
+        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
-<body>
+<body class="bg-slate-50 text-slate-900">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 sticky-nav border-b border-slate-700 py-4">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <div class="text-white font-bold text-xl tracking-tighter">
+                AISH <span class="accent-color text-sm font-normal ml-2">EXPERT MASTER CLASS</span>
+            </div>
+            <a href="#apply" class="accent-bg text-slate-900 px-5 py-2 rounded-full text-sm font-bold transition-all hover:bg-yellow-500">
+                신청하기
+            </a>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <header class="hero">
-        <div class="container">
-            <span class="hero-tag">AISH Intermediate Course Exclusive</span>
-            <h1>5주 만에 AI 활용 능력<br>상위 1% 전문가로 도약하십시오</h1>
-            <p>이론은 끝났습니다. 이제는 실전입니다. 정부과제부터 전자책 출간, 업무 자동화까지 핵심 실무 역량을 완벽하게 체득하는 전문가(Expert) 훈련 과정에 초대합니다.</p>
-            
-            <div class="hero-badges">
-                <div class="badge">100% 원격 라이브 실습</div>
-                <div class="badge">AISH 전문가 직강</div>
-                <div class="badge">실무 결과물 완성 중심</div>
+    <header class="gradient-bg text-white pt-32 pb-20 px-6">
+        <div class="container mx-auto text-center max-w-4xl">
+            <p class="text-yellow-400 font-semibold tracking-widest mb-4">AISH INTERMEDIATE MEMBERS ONLY</p>
+            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-8">
+                5주 만에 AI 활용 능력<br>상위 1% 전문가로 도약하십시오.
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-300 mb-10 leading-relaxed">
+                이론은 끝났습니다. 이제는 실전입니다.<br>
+                정부과제부터 전자책 출간, 업무 자동화까지 핵심 실무 역량을 완벽하게 체득하는<br>
+                <span class="text-white font-bold underline decoration-yellow-400">전문가(Expert) 훈련 과정</span>에 당신을 초대합니다.
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-4 text-sm">
+                <div class="bg-white/10 px-6 py-3 rounded-lg border border-white/20">
+                    100% 원격 라이브 실습
+                </div>
+                <div class="bg-white/10 px-6 py-3 rounded-lg border border-white/20">
+                    전문가(Expert) 직강
+                </div>
+                <div class="bg-white/10 px-6 py-3 rounded-lg border border-white/20">
+                    실전 결과물 중심 훈련
+                </div>
             </div>
-
-            <a href="#register" class="btn-primary">전문가 과정 신청하기</a>
         </div>
     </header>
 
-    <!-- Info Box -->
-    <div class="container">
-        <div class="info-card">
-            <div class="info-item">
-                <span class="info-label">교육 기간</span>
-                <span class="info-value">2026.02.11 ~ 03.18</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">강의 시간</span>
-                <span class="info-value">매주 수요일 21:00 - 23:00</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">강의 장소</span>
-                <span class="info-value">ZOOM 원격 라이브</span>
-            </div>
-            <div class="info-item">
-                <span class="info-label">모집 인원</span>
-                <span class="info-value">정원제 선착순 마감</span>
-            </div>
-        </div>
-    </div>
-
     <!-- Why Section -->
-    <section class="problem-solution">
-        <div class="container">
-            <div class="section-title">
-                <h2>왜 아직도 실무 적용이 막막할까요?</h2>
-                <div class="underline"></div>
+    <section class="py-24 px-6 bg-white">
+        <div class="container mx-auto max-w-4xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-6">아직도 AI 활용이 '막연하게' 느껴지십니까?</h2>
+                <div class="h-1 w-20 accent-bg mx-auto mb-8"></div>
+                <p class="text-lg text-slate-600 leading-relaxed">
+                    많은 분이 AI 툴 사용법은 알지만, 이를 실제 업무 성과로 연결하는 데 어려움을 겪습니다.<br>
+                    이 과정은 단순한 시청용 강의가 아닙니다. 매주 실제 비즈니스 자산을 만들어내는 <strong>'결과물 중심'</strong>의 강도 높은 실전 훈련입니다.
+                </p>
             </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="p-8 rounded-2xl border border-slate-200 bg-slate-50 card-hover">
+                    <h3 class="text-xl font-bold mb-4">학습의 한계 극복</h3>
+                    <p class="text-slate-600">명령어(Prompt) 몇 줄 배우는 것으로는 전문가가 될 수 없습니다. 비즈니스 로직과 AI를 결합하는 실질적인 아키텍처를 전수합니다.</p>
+                </div>
+                <div class="p-8 rounded-2xl border border-slate-200 bg-slate-50 card-hover">
+                    <h3 class="text-xl font-bold mb-4">눈에 보이는 성과물</h3>
+                    <p class="text-slate-600">사업계획서, 홍보 영상, 전자책, 자동화 에이전트 등 5주 후 당신의 손에는 강력한 비즈니스 포트폴리오가 남게 됩니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <div class="grid-2">
+    <!-- Course Info -->
+    <section class="py-24 px-6 bg-slate-900 text-white">
+        <div class="container mx-auto max-w-5xl">
+            <div class="grid md:grid-cols-3 gap-12 text-center">
                 <div>
-                    <p style="margin-bottom: 20px; font-size: 1.1rem; color: var(--text-muted);">
-                        수많은 AI 강의를 들었지만, 정작 내 업무에 어떻게 대입해야 할지 고민이신가요? 파편화된 지식은 수익이나 성과로 연결되지 않습니다.
-                    </p>
-                    <ul class="pain-points">
-                        <li>명령어(Prompt) 수준을 넘어선 전문적인 시스템 구축이 필요한 분</li>
-                        <li>단순 체험이 아닌 실제 사업 기획과 마케팅 결과물이 간절한 분</li>
-                        <li>AI를 활용해 수익화 모델(전자책, 자동화 등)을 즉시 구현하고 싶은 분</li>
-                    </ul>
+                    <div class="text-slate-400 mb-2 uppercase tracking-tighter text-sm">교육 기간</div>
+                    <div class="text-2xl font-bold">2026. 02. 12(목) - 03. 19(목)</div>
+                    <div class="text-yellow-400 text-sm mt-1">총 5주 과정 (매주 목요일)</div>
                 </div>
-                <div class="solution-box">
-                    <h3>Solution: 실전형 Expert 훈련</h3>
-                    <p style="color: var(--text-muted);">
-                        본 과정은 단순 시청용 교육이 아닙니다. 5주간의 강도 높은 훈련을 통해 실제 사업계획서를 완성하고, 내 이름으로 된 전자책을 출간하며, 나만의 업무 자동화 시스템을 구축하는 <strong>'결과 중심'</strong>의 마스터 클래스입니다.
-                    </p>
+                <div>
+                    <div class="text-slate-400 mb-2 uppercase tracking-tighter text-sm">교육 시간</div>
+                    <div class="text-2xl font-bold">매주 저녁 9시 - 10시30분</div>
+                    <div class="text-yellow-400 text-sm mt-1">직장인을 위한 골든타임</div>
                 </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Curriculum Section -->
-    <section class="curriculum">
-        <div class="container">
-            <div class="section-title">
-                <h2>Expert 커리큘럼 상세</h2>
-                <div class="underline"></div>
-            </div>
-
-            <div class="curriculum-grid">
-                <!-- Session 1 -->
-                <div class="session-card">
-                    <span class="session-num">Session 1</span>
-                    <h4>정부지원사업 마스터</h4>
-                    <p class="session-desc">회사 정부과제 사업계획서 전문가 되기. 복잡한 서식과 논리 구조를 AI로 자동 생성하여 승인율을 극대화합니다.</p>
-                </div>
-
-                <!-- Session 2 -->
-                <div class="session-card">
-                    <span class="session-num">Session 2</span>
-                    <h4>영상 마케팅 정복</h4>
-                    <p class="session-desc">회사 제품 유튜브 CF 동영상 제작하기. 텍스트와 이미지만으로 전문가 수준의 광고 영상을 기획하고 완성합니다.</p>
-                </div>
-
-                <!-- Session 3 -->
-                <div class="session-card">
-                    <span class="session-num">Session 3</span>
-                    <h4>퍼스널 브랜딩</h4>
-                    <p class="session-desc">AI로 5주 만에 교보문고 내 이름으로 전자책 출간하기. 목차 구성부터 원고 집필, 표지 디자인까지 전 과정을 AI로 가이드합니다.</p>
-                </div>
-
-                <!-- Session 4 -->
-                <div class="session-card">
-                    <span class="session-num">Session 4</span>
-                    <h4>웹사이트 구축</h4>
-                    <p class="session-desc">초보자도 AI로 회사 홈페이지 및 랜딩페이지 1시간 만에 완성하기. 노코드 툴과 AI의 결합으로 즉시 비즈니스 사이트를 개설합니다.</p>
-                </div>
-
-                <!-- Session 5 -->
-                <div class="session-card">
-                    <span class="session-num">Session 5</span>
-                    <h4>업무 혁신: AI 에이전트</h4>
-                    <p class="session-desc">나만의 업무자동화 에이전트 완성하기.</p>
-                    <div class="term-explanation">
-                        <strong>AI 에이전트:</strong> 단순히 질문에 답하는 것을 넘어, 사용자가 설정한 목표를 달성하기 위해 스스로 계획을 세우고 도구를 사용하여 작업을 수행하는 지능형 시스템입니다.
-                    </div>
-                </div>
-
-                <!-- Session 6 -->
-                <div class="session-card">
-                    <span class="session-num">Session 6</span>
-                    <h4>스마트 워크: Notebook LM</h4>
-                    <p class="session-desc">Notebook LM을 활용한 제안서 및 강의자료 즉시 제작하기.</p>
-                    <div class="term-explanation">
-                        <strong>Notebook LM:</strong> 구글이 개발한 AI 기반의 언어 모델로, 사용자가 업로드한 문서(PDF, 텍스트 등)를 완벽히 학습하여 해당 정보 내에서만 답변하고 요약하는 '개인 특화형 AI'입니다.
-                    </div>
-                </div>
-
-                <!-- Session 7 -->
-                <div class="session-card">
-                    <span class="session-num">Session 7</span>
-                    <h4>협업 툴: Google Workspace</h4>
-                    <p class="session-desc">구글 워크스페이스와 제미나이(Gemini) 완전 정복.</p>
-                    <div class="term-explanation">
-                        <strong>제미나이(Gemini):</strong> 구글의 최첨단 멀티모달 AI 모델로, 이메일 작성, 데이터 분석, 문서 작성을 구글 생태계 내에서 직접 지원합니다.
-                    </div>
-                </div>
-
-                <!-- Session 8 -->
-                <div class="session-card">
-                    <span class="session-num">Session 8</span>
-                    <h4>멀티모달 콘텐츠 제작</h4>
-                    <p class="session-desc">미드저니, 캔바, 제미나이를 활용한 고퀄리티 회사 홍보영상 제작.</p>
-                    <div class="term-explanation">
-                        <strong>멀티모달(Multi-modal):</strong> 텍스트, 이미지, 오디오, 영상 등 여러 가지 형태의 데이터를 동시에 이해하고 생성할 수 있는 인공지능 기술의 집약체입니다.
-                    </div>
+                <div>
+                    <div class="text-slate-400 mb-2 uppercase tracking-tighter text-sm">교육 장소</div>
+                    <div class="text-2xl font-bold">원격 라이브 (Zoom/Meet)</div>
+                    <div class="text-yellow-400 text-sm mt-1">실시간 실습 및 피드백</div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Video Section (Added as requested) -->
-    <section class="video-section">
-        <div class="container">
-            <div class="section-title">
-                <h2>Expert 마스터 클래스 미리보기</h2>
-                <div class="underline"></div>
-            </div>
-            <div class="video-wrapper">
-                <div style="padding:56.25% 0 0 0;position:relative;">
-                    <iframe src="https://player.vimeo.com/video/1158101057?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="동영상"></iframe>
-                </div>
-                <script src="https://player.vimeo.com/api/player.js"></script>
-            </div>
-            <p style="text-align: center; margin-top: 20px; color: var(--text-muted); font-size: 0.95rem;">
-                실제 강의 현장의 열기와 결과물을 짧은 영상으로 확인해 보십시오.
-            </p>
         </div>
     </section>
 
     <!-- Instructor Section -->
-    <section class="instructors">
-        <div class="container">
-            <div class="section-title">
-                <h2>실무 중심의 강사진: 4개 전문 트랙</h2>
-                <div class="underline"></div>
+    <section class="py-24 px-6 bg-white">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">TRACK & INSTRUCTORS</h2>
+                <p class="text-slate-500">분야별 최고 전문가와 함께하는 실전 트랙</p>
             </div>
 
-            <div class="instructor-grid">
+            <div class="grid md:grid-cols-2 gap-8">
                 <!-- Track A -->
-                <div class="track-card">
-                    <span class="track-id">Track A</span>
-                    <h3 class="track-title">정부지원사업 마스터</h3>
-                    <div class="instructor-name">차명일 강사</div>
-                    <span class="instructor-role">사업계획서 구조화 전문가</span>
-                    <div class="tool-info">핵심 도구: <strong>Gemini (제미나이)</strong></div>
-                    <p class="track-goal">방대한 자료 분석과 논리 구조화에 강한 Gemini를 활용하여 2026년도 정부지원사업 합격 가능성을 높이는 사업계획서를 완성합니다.</p>
+                <div class="p-8 rounded-2xl border border-slate-100 bg-slate-50 card-hover">
+                    <div class="flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-slate-900 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Track A</span>
+                            <div class="p-2 bg-yellow-100 rounded-lg">
+                                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">정부지원사업 마스터</h3>
+                        <div class="text-slate-500 font-medium mb-6 underline decoration-yellow-400 decoration-2 underline-offset-4">강사: 차명일</div>
+                        <div class="space-y-4 flex-grow text-sm">
+                            <div class="flex">
+                                <span class="w-20 font-bold text-slate-700">핵심 도구</span>
+                                <span class="text-slate-600">Gemini (제미나이)</span>
+                            </div>
+                            <div class="flex">
+                                <span class="w-20 font-bold text-slate-700">과정 목표</span>
+                                <span class="text-slate-600 leading-relaxed">방대한 자료 분석과 논리 구조화에 강한 Gemini를 활용하여 2026년도 정부지원사업 합격 가능성을 높이는 사업계획서 완성</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Track B -->
-                <div class="track-card">
-                    <span class="track-id">Track B</span>
-                    <h3 class="track-title">영상 마케팅 정복</h3>
-                    <div class="instructor-name">정명철 강사</div>
-                    <span class="instructor-role">AI 콘텐츠 체이닝 전문가</span>
-                    <div class="tool-info">핵심 도구: <strong>ChatGPT, Gemini, Midjourney</strong></div>
-                    <p class="track-goal">텍스트, 이미지, 영상 AI를 조합(Chaining)하여 외주 없이 고퀄리티 회사 홍보영상 및 유튜브 CF를 직접 제작합니다.</p>
+                <div class="p-8 rounded-2xl border border-slate-100 bg-slate-50 card-hover">
+                    <div class="flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-slate-900 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Track B</span>
+                            <div class="p-2 bg-yellow-100 rounded-lg">
+                                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 00-2 2z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">영상 마케팅 정복</h3>
+                        <div class="text-slate-500 font-medium mb-6 underline decoration-yellow-400 decoration-2 underline-offset-4">강사: 정명철</div>
+                        <div class="space-y-4 flex-grow text-sm">
+                            <div class="flex">
+                                <span class="w-20 font-bold text-slate-700">핵심 도구</span>
+                                <span class="text-slate-600">ChatGPT, Gemini, Midjourney</span>
+                            </div>
+                            <div class="flex">
+                                <span class="w-20 font-bold text-slate-700">과정 목표</span>
+                                <span class="text-slate-600 leading-relaxed">텍스트, 이미지, 영상 AI를 조합(Chaining)하여 외주 없이 고퀄리티 회사 홍보영상 및 유튜브 CF 제작</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Track C -->
-                <div class="track-card">
-                    <span class="track-id">Track C</span>
-                    <h3 class="track-title">웹사이트 구축</h3>
-                    <div class="instructor-name">김학태 강사</div>
-                    <span class="instructor-role">노코드 웹 엔지니어</span>
-                    <div class="tool-info">핵심 도구: <strong>Gemini, Github, Apps Script</strong></div>
-                    <p class="track-goal">코딩을 몰라도 AI와 오픈소스를 활용하여 실제 기능이 작동하는 회사 홈페이지 및 랜딩페이지를 구축합니다.</p>
+                <div class="p-8 rounded-2xl border border-slate-100 bg-slate-50 card-hover">
+                    <div class="flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-slate-900 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Track C</span>
+                            <div class="p-2 bg-yellow-100 rounded-lg">
+                                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 21h6l-.75-4M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">웹사이트 구축</h3>
+                        <div class="text-slate-500 font-medium mb-6 underline decoration-yellow-400 decoration-2 underline-offset-4">강사: 김학태</div>
+                        <div class="space-y-4 flex-grow text-sm">
+                            <div class="flex">
+                                <span class="w-20 font-bold text-slate-700">핵심 도구</span>
+                                <span class="text-slate-600">Gemini, Github, Apps Script</span>
+                            </div>
+                            <div class="flex">
+                                <span class="w-20 font-bold text-slate-700">과정 목표</span>
+                                <span class="text-slate-600 leading-relaxed">코딩을 몰라도 AI와 오픈소스를 활용하여 기능이 작동하는 회사 홈페이지 및 랜딩페이지 구축</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Track D -->
-                <div class="track-card">
-                    <span class="track-id">Track D</span>
-                    <h3 class="track-title">업무 혁신: AI 에이전트</h3>
-                    <div class="instructor-name">김민성 강사</div>
-                    <span class="instructor-role">업무 자동화 설계 전문가</span>
-                    <div class="tool-info">핵심 도구: <strong>Claude (클로드)</strong></div>
-                    <p class="track-goal">맥락 이해도가 높은 Claude를 활용하여 반복 업무를 획기적으로 제거하는 나만의 지능형 AI 에이전트를 구축합니다.</p>
+                <div class="p-8 rounded-2xl border border-slate-100 bg-slate-50 card-hover">
+                    <div class="flex flex-col h-full">
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="bg-slate-900 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Track D</span>
+                            <div class="p-2 bg-yellow-100 rounded-lg">
+                                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-2">업무 혁신: AI 에이전트</h3>
+                        <div class="text-slate-500 font-medium mb-6 underline decoration-yellow-400 decoration-2 underline-offset-4">강사: 김민성</div>
+                        <div class="space-y-4 flex-grow text-sm">
+                            <div class="flex">
+                                <span class="w-20 font-bold text-slate-700">핵심 도구</span>
+                                <span class="text-slate-600">Claude (클로드)</span>
+                            </div>
+                            <div class="flex">
+                                <span class="w-20 font-bold text-slate-700">과정 목표</span>
+                                <span class="text-slate-600 leading-relaxed">맥락 이해도가 높은 Claude를 활용하여 반복 업무를 제거하는 나만의 AI 에이전트 구축</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Registration CTA -->
-    <section class="cta-section" id="register">
-        <div class="container">
-            <div class="registration-box">
-                <div class="reg-info">
-                    <div>
-                        <h2 style="font-size: 2.5rem; line-height: 1.2; margin-bottom: 20px;">2026년, 당신의 커리어를 바꿀 5주.</h2>
-                        <p style="color: #bfdbfe; font-size: 1.1rem;">지금 바로 전문가 대열에 합류하세요. 소수 정예로 진행되는 이번 기회를 놓치지 마십시오.</p>
-                    </div>
-                    <div>
-                        <div class="deadline-badge">접수 기간: 01.26 - 01.30</div>
-                        <p style="margin-top: 15px; font-size: 0.9rem; color: #93c5fd;">* 단 5일간 한정 접수 후 마감됩니다.</p>
+    <!-- Video Section -->
+    <section class="py-24 px-6 bg-slate-50">
+        <div class="container mx-auto max-w-5xl">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4">COURSE PREVIEW</h2>
+                <p class="text-slate-500">실시간 라이브 실습과 실제 구현되는 결과물을 영상으로 확인해 보십시오.</p>
+            </div>
+            <div class="rounded-3xl overflow-hidden shadow-2xl bg-black border border-slate-200">
+                <div style="padding:56.25% 0 0 0;position:relative;">
+                    <iframe src="https://player.vimeo.com/video/1158585591?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="동영상"></iframe>
+                </div>
+                <script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA & Form -->
+    <section id="apply" class="py-24 px-6 bg-white">
+        <div class="container mx-auto max-w-4xl">
+            <div class="bg-slate-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+                <div class="p-10 md:w-1/2 text-white flex flex-col justify-center">
+                    <h2 class="text-3xl font-bold mb-6">2026년, 당신의 커리어를 바꿀 단 5주.</h2>
+                    <p class="text-slate-400 mb-8">
+                        지금 바로 전문가 대열에 합류하십시오.<br>
+                        기회는 준비된 사람에게만 찾아옵니다.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-center text-sm">
+                            <span class="w-24 text-slate-500">접수 기간</span>
+                            <span class="font-bold text-yellow-400">2026. 01. 26 - 01. 30 (단 5일간)</span>
+                        </div>
+                        <div class="flex items-center text-sm">
+                            <span class="w-24 text-slate-500">정원</span>
+                            <span>선착순 소수 정예 마감</span>
+                        </div>
                     </div>
                 </div>
-                <div class="reg-form">
-                    <form id="applyForm">
-                        <div class="form-group">
-                            <label for="userName">성명</label>
-                            <input type="text" id="userName" name="name" placeholder="성함을 입력해주세요" required>
+                <div class="p-10 md:w-1/2 bg-slate-50">
+                    <form id="applyForm" class="space-y-4">
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-1">성명</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-slate-300 form-input text-sm" placeholder="성함을 입력하세요">
                         </div>
-                        <div class="form-group">
-                            <label for="userPhone">연락처</label>
-                            <input type="tel" id="userPhone" name="phone" placeholder="010-0000-0000" required>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-1">연락처</label>
+                            <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-lg border border-slate-300 form-input text-sm" placeholder="010-0000-0000">
                         </div>
-                        <div class="form-group">
-                            <label for="userEmail">이메일 주소</label>
-                            <input type="email" id="userEmail" name="email" placeholder="example@email.com" required>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-1">이메일</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 form-input text-sm" placeholder="example@email.com">
                         </div>
-                        <div class="form-group">
-                            <label for="courseType">참가 희망 과정</label>
-                            <select id="courseType" name="course">
-                                <option value="expert">AISH 전문가 마스터 클래스 (5주)</option>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-1">기수 확인 (AISH 수료 차수)</label>
+                            <select id="generation" name="generation" required class="w-full px-4 py-3 rounded-lg border border-slate-300 form-input text-sm bg-white">
+                                <option value="" disabled selected>기수를 선택해 주세요</option>
+                                <option value="1기">1기</option>
+                                <option value="2기">2기</option>
+                                <option value="3기">3기</option>
+                                <option value="4기">4기</option>
+                                <option value="5기">5기</option>
+                                <option value="6기">6기</option>
+                                <option value="7기">7기</option>
+                                <option value="8기">8기</option>
+                                <option value="9기">9기</option>
+                                <option value="10기">10기</option>
                             </select>
                         </div>
-                        <div class="checkbox-group">
-                            <input type="checkbox" id="agree" required>
-                            <label for="agree" style="font-size: 0.85rem; color: var(--text-muted); cursor: pointer;">
-                                전문가 과정 안내 및 개인정보 수집에 동의합니다. (필수)
-                            </label>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-500 mb-2">참가 희망 트랙 선택 (하나만 선택 가능)</label>
+                            <div class="space-y-2 text-sm text-slate-700">
+                                <label class="flex items-center cursor-pointer hover:text-slate-900">
+                                    <input type="radio" name="course" value="Track A. 정부지원사업 마스터" required class="mr-2"> Track A. 정부지원사업 마스터
+                                </label>
+                                <label class="flex items-center cursor-pointer hover:text-slate-900">
+                                    <input type="radio" name="course" value="Track B. 영상 마케팅 정복" class="mr-2"> Track B. 영상 마케팅 정복
+                                </label>
+                                <label class="flex items-center cursor-pointer hover:text-slate-900">
+                                    <input type="radio" name="course" value="Track C. 웹사이트 구축" class="mr-2"> Track C. 웹사이트 구축
+                                </label>
+                                <label class="flex items-center cursor-pointer hover:text-slate-900">
+                                    <input type="radio" name="course" value="Track D. 업무 혁신 (에이전트)" class="mr-2"> Track D. 업무 혁신 (에이전트)
+                                </label>
+                            </div>
                         </div>
-                        <button type="submit" class="btn-primary" style="width: 100%;">전문가 과정 신청하기</button>
+                        <button type="submit" id="submitBtn" class="w-full accent-bg text-slate-900 font-bold py-4 rounded-lg hover:bg-yellow-500 transition-all mt-4 flex justify-center items-center gap-2">
+                            <span id="btnText">전문가 과정 신청하기</span>
+                            <div id="btnSpinner" class="spinner"></div>
+                        </button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="container">
-            <p>© 2026 AISH. All rights reserved. | 전문가 양성 교육 운영국</p>
-            <p style="margin-top: 10px; font-size: 0.8rem;">본 페이지는 전문가 과정을 위해 최적화된 고전환율 랜딩페이지입니다.</p>
+    <!-- Chatbot Section -->
+    <section class="py-20 px-6 bg-slate-50">
+        <div class="container mx-auto max-w-4xl">
+            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-200 text-center">
+                <h2 class="text-3xl font-bold mb-6 text-slate-900">교육에 대해 무엇이든지 물어보세요</h2>
+                <p class="text-lg text-slate-600 mb-10 leading-relaxed">
+                    AISH 전문가 과정의 커리큘럼, 일정, 기대 효과 등 궁금한 점이 있으신가요?<br>
+                    <strong>NotebookLM</strong> 기반의 AI 상담봇이 실시간으로 상세히 답변해 드립니다.
+                </p>
+                <div class="flex flex-col items-center gap-6">
+                    <a href="https://notebooklm.google.com/notebook/0e63d8d6-ed7f-4eb8-94f5-0cec36877e61" target="_blank" rel="noopener noreferrer" class="bg-slate-900 text-white px-10 py-4 rounded-full font-bold hover:bg-slate-800 transition-all flex items-center gap-3">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
+                        </svg>
+                        AI 상담 챗봇 시작하기
+                    </a>
+                    
+                    <!-- Vocabulary for NotebookLM -->
+                    <div class="max-w-xl p-4 bg-slate-50 rounded-xl border border-slate-100 text-left">
+                        <p class="text-xs text-slate-500 leading-normal">
+                            <strong>NotebookLM 해설:</strong> 구글에서 제공하는 인공지능 기반의 지능형 메모 및 자료 분석 도구입니다. 교육 과정에 대한 방대한 정보를 학습하여 사용자의 질문에 가장 정확하고 논리적인 답변을 제공합니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <!-- Visual Gallery Section -->
+    <section class="py-16 px-6 bg-white border-t border-slate-100">
+        <div class="container mx-auto max-w-6xl">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Image 1 -->
+                <div class="aspect-video overflow-hidden rounded-2xl shadow-md border border-slate-100 bg-slate-50">
+                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=900" 
+                         alt="[의자에 앉아있는 남자와 여자]" 
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                         onerror="this.src='https://via.placeholder.com/600x400?text=AISH+Consultation'">
+                </div>
+                <!-- Image 2 -->
+                <div class="aspect-video overflow-hidden rounded-2xl shadow-md border border-slate-100 bg-slate-50">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&auto=format&fit=crop&q=80&ixlib=rb-4.1.0" 
+                         alt="[교육 현장 디지털 이미지]" 
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                         onerror="this.src='https://via.placeholder.com/600x400?text=Digital+Education'">
+                </div>
+                <!-- Image 3 -->
+                <div class="aspect-video overflow-hidden rounded-2xl shadow-md border border-slate-100 bg-slate-50">
+                    <img src="https://media.istockphoto.com/id/2208516349/ko/%EC%82%AC%EC%A7%84/%ED%95%99%EA%B5%90%EC%97%90%EC%84%9C-%EC%98%81%EC%96%B4%EB%A5%BC-%EA%B0%80%EB%A5%B4%EC%B9%98%EB%8A%94-%EC%97%AC%EA%B5%90%EC%82%AC.webp?a=1&b=1&s=612x612&w=0&k=20&c=buN6YxcwVpYhqywGtwmhkO06A_ivsNcaNORkrUtjrDo=" 
+                         alt="[전문 교육 진행 현장]" 
+                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                         onerror="this.src='https://via.placeholder.com/600x400?text=Expert+Instruction'">
+                </div>
+            </div>
+            
+            <!-- Vocabulary for Visual Assets -->
+            <div class="mt-8 text-center">
+                <p class="text-xs text-slate-400">
+                    <strong>비주얼 에셋(Visual Assets):</strong> 교육의 신뢰도와 현장감을 높이기 위해 사용되는 시각 자료(이미지, 영상 등)를 의미합니다.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-white border-t border-slate-200 text-center">
+        <p class="text-slate-400 text-sm">© 2026 AISH. All Rights Reserved. 본 과정은 AISH 중급 회원을 대상으로 하는 한정 교육입니다.</p>
     </footer>
 
+    <!-- Custom Modal for Alerts -->
+    <div id="modal" class="fixed inset-0 bg-black/60 z-[100] hidden flex items-center justify-center px-4">
+        <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center">
+            <h3 id="modalTitle" class="text-xl font-bold mb-4">알림</h3>
+            <p id="modalMessage" class="text-slate-600 mb-6"></p>
+            <button onclick="closeModal()" class="w-full bg-slate-900 text-white font-bold py-3 rounded-lg">확인</button>
+        </div>
+    </div>
+
     <script>
-        // Form Submission Logic
-        document.getElementById('applyForm').addEventListener('submit', function(e) {
+        // 중요: 아래 URL에 본인이 생성한 '구글 앱스 스크립트 웹 앱 URL'을 넣어야 실제 동작합니다.
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz_vya_9wbo5HJamV_hc7-SFxtKa3_IJFstD9oOwrgSPijnNTXZqb0xrRQhFhzIB6_o/exec';
+
+        document.getElementById('applyForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const name = document.getElementById('userName').value;
-            const phone = document.getElementById('userPhone').value;
-            const email = document.getElementById('userEmail').value;
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const btnSpinner = document.getElementById('btnSpinner');
 
-            // Simple validation and user feedback
-            if(name && phone && email) {
-                console.log("Registration Data:", { name, phone, email });
-                
-                // Show custom modal-like message
-                const message = document.createElement('div');
-                message.style.position = 'fixed';
-                message.style.top = '50%';
-                message.style.left = '50%';
-                message.style.transform = 'translate(-50%, -50%)';
-                message.style.backgroundColor = '#1e40af';
-                message.style.color = 'white';
-                message.style.padding = '30px 50px';
-                message.style.borderRadius = '15px';
-                message.style.boxShadow = '0 10px 30px rgba(0,0,0,0.3)';
-                message.style.zIndex = '1000';
-                message.style.textAlign = 'center';
-                message.innerHTML = `
-                    <h3 style="margin-bottom: 15px;">신청 접수 완료</h3>
-                    <p>${name}님의 전문가 과정 신청이 정상적으로 접수되었습니다.</p>
-                    <p style="font-size: 0.9rem; margin-top: 10px;">기재하신 이메일로 결제 안내 문자를 보내드립니다.</p>
-                    <button onclick="this.parentElement.remove()" style="margin-top: 20px; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">닫기</button>
-                `;
-                document.body.appendChild(message);
-                
-                // Reset form
+            submitBtn.disabled = true;
+            btnText.innerText = "데이터 전송 중...";
+            btnSpinner.style.display = "block";
+
+            const formData = new FormData(this);
+            const data = {
+                name: formData.get('name'),
+                phone: formData.get('phone'),
+                email: formData.get('email'),
+                generation: formData.get('generation'),
+                course: formData.get('course'),
+                admin_email: 'cmart008@gmail.com'
+            };
+
+            try {
+                const response = await fetch(SCRIPT_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    cache: 'no-cache',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                showModal('신청 완료', `${data.name}님의 신청 정보가 구글 시트에 기록되었습니다. 관리자에게도 확인 메일이 발송되었으니 잠시만 기다려 주십시오.`);
                 this.reset();
+
+            } catch (error) {
+                console.error("전송 오류 발생:", error);
+                showModal('오류 안내', '데이터 전송 중 문제가 발생했습니다. 관리자 주소(cmart008@gmail.com)로 직접 문의 부탁드립니다.');
+            } finally {
+                submitBtn.disabled = false;
+                btnText.innerText = "전문가 과정 신청하기";
+                btnSpinner.style.display = "none";
             }
         });
 
-        // Smooth Scroll for Anchor Links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if(target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+        function showModal(title, message) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalMessage').innerText = message;
+            document.getElementById('modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+        }
     </script>
 </body>
 </html>
