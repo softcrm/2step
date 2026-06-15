@@ -3,490 +3,440 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AISH 전문가 마스터 클래스 | 5주 만에 상위 1%로</title>
+    <title>2026 남해·순천 가족 여행 가이드</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Noto Sans KR', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'primary': '#0D9488', // Teal 600 - Ocean/Nature vibe
+                        'primary-light': '#F0FDFA', // Teal 50
+                        'accent': '#D97706', // Amber 600 - Warmth
+                        'dark': '#1F2937', // Gray 800
+                        'light': '#F9FAFB', // Gray 50
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
-        
-        body {
-            font-family: 'Noto Sans KR', 'Inter', sans-serif;
-            scroll-behavior: smooth;
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8; 
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        /* Tab styling */
+        .tab-content { display: none; }
+        .tab-content.active { display: block; animation: fadeIn 0.4s ease-in-out; }
+        .tab-btn.active { 
+            border-bottom-width: 4px;
+            border-color: #0D9488;
+            color: #0D9488;
+            font-weight: 700;
         }
-        
-        .accent-color {
-            color: #fbbf24;
-        }
-        
-        .accent-bg {
-            background-color: #fbbf24;
-        }
-
-        .card-hover:hover {
-            transform: translateY(-5px);
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-        }
-
-        .sticky-nav {
-            backdrop-filter: blur(10px);
-            background-color: rgba(15, 23, 42, 0.9);
-        }
-
-        .form-input:focus {
-            border-color: #fbbf24;
-            outline: none;
-            box-shadow: 0 0 0 2px rgba(251, 191, 36, 0.2);
-        }
-
-        /* Loading Spinner */
-        .spinner {
-            display: none;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(0,0,0,0.1);
-            border-top-color: #000;
-            border-radius: 50%;
-            animation: spin 1s ease-in-out infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
 
-    <!-- Navigation -->
-    <nav class="fixed w-full z-50 sticky-nav border-b border-slate-700 py-4">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="text-white font-bold text-xl tracking-tighter">
-                AISH <span class="accent-color text-sm font-normal ml-2">EXPERT MASTER CLASS</span>
-            </div>
-            <a href="#apply" class="accent-bg text-slate-900 px-5 py-2 rounded-full text-sm font-bold transition-all hover:bg-yellow-500">
-                신청하기
-            </a>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <header class="gradient-bg text-white pt-32 pb-20 px-6">
-        <div class="container mx-auto text-center max-w-4xl">
-            <p class="text-yellow-400 font-semibold tracking-widest mb-4">AISH INTERMEDIATE MEMBERS ONLY</p>
-            <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-8">
-                5주 만에 AI 활용 능력<br>상위 1% 전문가로 도약하십시오.
-            </h1>
-            <p class="text-xl md:text-2xl text-slate-300 mb-10 leading-relaxed">
-                이론은 끝났습니다. 이제는 실전입니다.<br>
-                정부과제부터 전자책 출간, 업무 자동화까지 핵심 실무 역량을 완벽하게 체득하는<br>
-                <span class="text-white font-bold underline decoration-yellow-400">전문가(Expert) 훈련 과정</span>에 당신을 초대합니다.
-            </p>
-            <div class="flex flex-col md:flex-row justify-center gap-4 text-sm">
-                <div class="bg-white/10 px-6 py-3 rounded-lg border border-white/20">
-                    100% 원격 라이브 실습
-                </div>
-                <div class="bg-white/10 px-6 py-3 rounded-lg border border-white/20">
-                    전문가(Expert) 직강
-                </div>
-                <div class="bg-white/10 px-6 py-3 rounded-lg border border-white/20">
-                    실전 결과물 중심 훈련
-                </div>
+    <header class="bg-primary text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-xl md:text-2xl font-bold tracking-tight">🌿 2026 우리가족 힐링여행</h1>
+            <div class="text-sm font-medium bg-white/20 px-3 py-1 rounded-full">
+                6.18(목) - 6.21(일)
             </div>
         </div>
     </header>
 
-    <!-- Why Section -->
-    <section class="py-24 px-6 bg-white">
-        <div class="container mx-auto max-w-4xl">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-6">아직도 AI 활용이 '막연하게' 느껴지십니까?</h2>
-                <div class="h-1 w-20 accent-bg mx-auto mb-8"></div>
-                <p class="text-lg text-slate-600 leading-relaxed">
-                    많은 분이 AI 툴 사용법은 알지만, 이를 실제 업무 성과로 연결하는 데 어려움을 겪습니다.<br>
-                    이 과정은 단순한 시청용 강의가 아닙니다. 매주 실제 비즈니스 자산을 만들어내는 <strong>'결과물 중심'</strong>의 강도 높은 실전 훈련입니다.
-                </p>
-            </div>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="p-8 rounded-2xl border border-slate-200 bg-slate-50 card-hover">
-                    <h3 class="text-xl font-bold mb-4">학습의 한계 극복</h3>
-                    <p class="text-slate-600">명령어(Prompt) 몇 줄 배우는 것으로는 전문가가 될 수 없습니다. 비즈니스 로직과 AI를 결합하는 실질적인 아키텍처를 전수합니다.</p>
-                </div>
-                <div class="p-8 rounded-2xl border border-slate-200 bg-slate-50 card-hover">
-                    <h3 class="text-xl font-bold mb-4">눈에 보이는 성과물</h3>
-                    <p class="text-slate-600">사업계획서, 홍보 영상, 전자책, 자동화 에이전트 등 5주 후 당신의 손에는 강력한 비즈니스 포트폴리오가 남게 됩니다.</p>
-                </div>
+    <main class="max-w-4xl mx-auto pb-20">
+        <!-- Hero Image -->
+        <div class="relative h-64 md:h-80 bg-cover bg-center" style="background-image: url('https://www.telltrip.com/wp-content/uploads/2025/09/namhae-german-village-guide4.webp');">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-4 fade-in">
+                <h2 class="text-3xl md:text-5xl font-bold mb-3 drop-shadow-lg">남해 & 순천의 매력 속으로</h2>
+                <p class="text-lg md:text-xl font-light drop-shadow-md">3세대가 함께하는 잊지 못할 3박 4일</p>
             </div>
         </div>
-    </section>
 
-    <!-- Course Info -->
-    <section class="py-24 px-6 bg-slate-900 text-white">
-        <div class="container mx-auto max-w-5xl">
-            <div class="grid md:grid-cols-3 gap-12 text-center">
+        <!-- Strategy Alert -->
+        <div class="mx-4 -mt-8 relative z-10 bg-white rounded-xl shadow-lg p-5 border-l-4 border-accent">
+            <div class="flex items-start">
+                <span class="text-2xl mr-3">💡</span>
                 <div>
-                    <div class="text-slate-400 mb-2 uppercase tracking-tighter text-sm">교육 기간</div>
-                    <div class="text-2xl font-bold">2026. 02. 12(목) - 03. 19(목)</div>
-                    <div class="text-yellow-400 text-sm mt-1">총 5주 과정 (매주 목요일)</div>
-                </div>
-                <div>
-                    <div class="text-slate-400 mb-2 uppercase tracking-tighter text-sm">교육 시간</div>
-                    <div class="text-2xl font-bold">매주 저녁 9시 - 10시30분</div>
-                    <div class="text-yellow-400 text-sm mt-1">직장인을 위한 골든타임</div>
-                </div>
-                <div>
-                    <div class="text-slate-400 mb-2 uppercase tracking-tighter text-sm">교육 장소</div>
-                    <div class="text-2xl font-bold">원격 라이브 (Zoom/Meet)</div>
-                    <div class="text-yellow-400 text-sm mt-1">실시간 실습 및 피드백</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Instructor Section -->
-    <section class="py-24 px-6 bg-white">
-        <div class="container mx-auto max-w-6xl">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-bold mb-4">TRACK & INSTRUCTORS</h2>
-                <p class="text-slate-500">분야별 최고 전문가와 함께하는 실전 트랙</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Track A -->
-                <div class="p-8 rounded-2xl border border-slate-100 bg-slate-50 card-hover">
-                    <div class="flex flex-col h-full">
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="bg-slate-900 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Track A</span>
-                            <div class="p-2 bg-yellow-100 rounded-lg">
-                                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-2">정부지원사업 마스터</h3>
-                        <div class="text-slate-500 font-medium mb-6 underline decoration-yellow-400 decoration-2 underline-offset-4">강사: 차명일</div>
-                        <div class="space-y-4 flex-grow text-sm">
-                            <div class="flex">
-                                <span class="w-20 font-bold text-slate-700">핵심 도구</span>
-                                <span class="text-slate-600">Gemini (제미나이)</span>
-                            </div>
-                            <div class="flex">
-                                <span class="w-20 font-bold text-slate-700">과정 목표</span>
-                                <span class="text-slate-600 leading-relaxed">방대한 자료 분석과 논리 구조화에 강한 Gemini를 활용하여 2026년도 정부지원사업 합격 가능성을 높이는 사업계획서 완성</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Track B -->
-                <div class="p-8 rounded-2xl border border-slate-100 bg-slate-50 card-hover">
-                    <div class="flex flex-col h-full">
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="bg-slate-900 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Track B</span>
-                            <div class="p-2 bg-yellow-100 rounded-lg">
-                                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 00-2 2z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-2">영상 마케팅 정복</h3>
-                        <div class="text-slate-500 font-medium mb-6 underline decoration-yellow-400 decoration-2 underline-offset-4">강사: 정명철</div>
-                        <div class="space-y-4 flex-grow text-sm">
-                            <div class="flex">
-                                <span class="w-20 font-bold text-slate-700">핵심 도구</span>
-                                <span class="text-slate-600">ChatGPT, Gemini, Midjourney</span>
-                            </div>
-                            <div class="flex">
-                                <span class="w-20 font-bold text-slate-700">과정 목표</span>
-                                <span class="text-slate-600 leading-relaxed">텍스트, 이미지, 영상 AI를 조합(Chaining)하여 외주 없이 고퀄리티 회사 홍보영상 및 유튜브 CF 제작</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Track C -->
-                <div class="p-8 rounded-2xl border border-slate-100 bg-slate-50 card-hover">
-                    <div class="flex flex-col h-full">
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="bg-slate-900 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Track C</span>
-                            <div class="p-2 bg-yellow-100 rounded-lg">
-                                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 21h6l-.75-4M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-2">웹사이트 구축</h3>
-                        <div class="text-slate-500 font-medium mb-6 underline decoration-yellow-400 decoration-2 underline-offset-4">강사: 김학태</div>
-                        <div class="space-y-4 flex-grow text-sm">
-                            <div class="flex">
-                                <span class="w-20 font-bold text-slate-700">핵심 도구</span>
-                                <span class="text-slate-600">Gemini, Github, Apps Script</span>
-                            </div>
-                            <div class="flex">
-                                <span class="w-20 font-bold text-slate-700">과정 목표</span>
-                                <span class="text-slate-600 leading-relaxed">코딩을 몰라도 AI와 오픈소스를 활용하여 기능이 작동하는 회사 홈페이지 및 랜딩페이지 구축</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Track D -->
-                <div class="p-8 rounded-2xl border border-slate-100 bg-slate-50 card-hover">
-                    <div class="flex flex-col h-full">
-                        <div class="flex justify-between items-start mb-4">
-                            <span class="bg-slate-900 text-white text-xs px-3 py-1 rounded-full font-bold uppercase tracking-wider">Track D</span>
-                            <div class="p-2 bg-yellow-100 rounded-lg">
-                                <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-2">업무 혁신: AI 에이전트</h3>
-                        <div class="text-slate-500 font-medium mb-6 underline decoration-yellow-400 decoration-2 underline-offset-4">강사: 김민성</div>
-                        <div class="space-y-4 flex-grow text-sm">
-                            <div class="flex">
-                                <span class="w-20 font-bold text-slate-700">핵심 도구</span>
-                                <span class="text-slate-600">Claude (클로드)</span>
-                            </div>
-                            <div class="flex">
-                                <span class="w-20 font-bold text-slate-700">과정 목표</span>
-                                <span class="text-slate-600 leading-relaxed">맥락 이해도가 높은 Claude를 활용하여 반복 업무를 제거하는 나만의 AI 에이전트 구축</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Video Section -->
-    <section class="py-24 px-6 bg-slate-50">
-        <div class="container mx-auto max-w-5xl">
-            <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold mb-4">COURSE PREVIEW</h2>
-                <p class="text-slate-500">실시간 라이브 실습과 실제 구현되는 결과물을 영상으로 확인해 보십시오.</p>
-            </div>
-            <div class="rounded-3xl overflow-hidden shadow-2xl bg-black border border-slate-200">
-                <div style="padding:56.25% 0 0 0;position:relative;">
-                    <iframe src="https://player.vimeo.com/video/1158585591?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479&amp;autoplay=1&amp;muted=1&amp;loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" referrerpolicy="strict-origin-when-cross-origin" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="동영상"></iframe>
-                </div>
-                <script src="https://player.vimeo.com/api/player.js"></script>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA & Form -->
-    <section id="apply" class="py-24 px-6 bg-white">
-        <div class="container mx-auto max-w-4xl">
-            <div class="bg-slate-900 rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
-                <div class="p-10 md:w-1/2 text-white flex flex-col justify-center">
-                    <h2 class="text-3xl font-bold mb-6">2026년, 당신의 커리어를 바꿀 단 5주.</h2>
-                    <p class="text-slate-400 mb-8">
-                        지금 바로 전문가 대열에 합류하십시오.<br>
-                        기회는 준비된 사람에게만 찾아옵니다.
+                    <h3 class="text-lg font-bold text-dark mb-1">여행의 핵심: 투트랙(Two-track) 전략</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        89세 부모님의 <strong>안전과 휴식</strong>을 최우선으로 하며, 10대 미국 조카들의 <strong>에너제틱한 체험</strong>을 동시에 만족시킵니다. 거동이 불편한 코스에서는 부모님은 오션뷰 카페에서 휴식하시고, 젊은 가족들만 탐험을 즐깁니다.
                     </p>
-                    <div class="space-y-4">
-                        <div class="flex items-center text-sm">
-                            <span class="w-24 text-slate-500">접수 기간</span>
-                            <span class="font-bold text-yellow-400">2026. 01. 26 - 01. 30 (단 5일간)</span>
-                        </div>
-                        <div class="flex items-center text-sm">
-                            <span class="w-24 text-slate-500">정원</span>
-                            <span>선착순 소수 정예 마감</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="p-10 md:w-1/2 bg-slate-50">
-                    <form id="applyForm" class="space-y-4">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1">성명</label>
-                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 rounded-lg border border-slate-300 form-input text-sm" placeholder="성함을 입력하세요">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1">연락처</label>
-                            <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 rounded-lg border border-slate-300 form-input text-sm" placeholder="010-0000-0000">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1">이메일</label>
-                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 rounded-lg border border-slate-300 form-input text-sm" placeholder="example@email.com">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-1">기수 확인 (AISH 수료 차수)</label>
-                            <select id="generation" name="generation" required class="w-full px-4 py-3 rounded-lg border border-slate-300 form-input text-sm bg-white">
-                                <option value="" disabled selected>기수를 선택해 주세요</option>
-                                <option value="1기">1기</option>
-                                <option value="2기">2기</option>
-                                <option value="3기">3기</option>
-                                <option value="4기">4기</option>
-                                <option value="5기">5기</option>
-                                <option value="6기">6기</option>
-                                <option value="7기">7기</option>
-                                <option value="8기">8기</option>
-                                <option value="9기">9기</option>
-                                <option value="10기">10기</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-500 mb-2">참가 희망 트랙 선택 (하나만 선택 가능)</label>
-                            <div class="space-y-2 text-sm text-slate-700">
-                                <label class="flex items-center cursor-pointer hover:text-slate-900">
-                                    <input type="radio" name="course" value="Track A. 정부지원사업 마스터" required class="mr-2"> Track A. 정부지원사업 마스터
-                                </label>
-                                <label class="flex items-center cursor-pointer hover:text-slate-900">
-                                    <input type="radio" name="course" value="Track B. 영상 마케팅 정복" class="mr-2"> Track B. 영상 마케팅 정복
-                                </label>
-                                <label class="flex items-center cursor-pointer hover:text-slate-900">
-                                    <input type="radio" name="course" value="Track C. 웹사이트 구축" class="mr-2"> Track C. 웹사이트 구축
-                                </label>
-                                <label class="flex items-center cursor-pointer hover:text-slate-900">
-                                    <input type="radio" name="course" value="Track D. 업무 혁신 (에이전트)" class="mr-2"> Track D. 업무 혁신 (에이전트)
-                                </label>
-                            </div>
-                        </div>
-                        <button type="submit" id="submitBtn" class="w-full accent-bg text-slate-900 font-bold py-4 rounded-lg hover:bg-yellow-500 transition-all mt-4 flex justify-center items-center gap-2">
-                            <span id="btnText">전문가 과정 신청하기</span>
-                            <div id="btnSpinner" class="spinner"></div>
-                        </button>
-                    </form>
                 </div>
             </div>
         </div>
-    </section>
 
-    <!-- Chatbot Section -->
-    <section class="py-20 px-6 bg-slate-50">
-        <div class="container mx-auto max-w-4xl">
-            <div class="bg-white rounded-3xl p-8 md:p-12 shadow-sm border border-slate-200 text-center">
-                <h2 class="text-3xl font-bold mb-6 text-slate-900">교육에 대해 무엇이든지 물어보세요</h2>
-                <p class="text-lg text-slate-600 mb-10 leading-relaxed">
-                    AISH 전문가 과정의 커리큘럼, 일정, 기대 효과 등 궁금한 점이 있으신가요?<br>
-                    <strong>NotebookLM</strong> 기반의 AI 상담봇이 실시간으로 상세히 답변해 드립니다.
-                </p>
-                <div class="flex flex-col items-center gap-6">
-                    <a href="https://notebooklm.google.com/notebook/0e63d8d6-ed7f-4eb8-94f5-0cec36877e61" target="_blank" rel="noopener noreferrer" class="bg-slate-900 text-white px-10 py-4 rounded-full font-bold hover:bg-slate-800 transition-all flex items-center gap-3">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path>
-                        </svg>
-                        AI 상담 챗봇 시작하기
-                    </a>
-                    
-                    <!-- Vocabulary for NotebookLM -->
-                    <div class="max-w-xl p-4 bg-slate-50 rounded-xl border border-slate-100 text-left">
-                        <p class="text-xs text-slate-500 leading-normal">
-                            <strong>NotebookLM 해설:</strong> 구글에서 제공하는 인공지능 기반의 지능형 메모 및 자료 분석 도구입니다. 교육 과정에 대한 방대한 정보를 학습하여 사용자의 질문에 가장 정확하고 논리적인 답변을 제공합니다.
+        <section class="mt-10 px-4">
+            <h2 class="text-2xl font-bold text-dark mb-6 flex items-center">
+                <span class="text-primary mr-2">🏡</span> 우리의 보금자리
+            </h2>
+            <div class="grid md:grid-cols-2 gap-5">
+                <!-- Namhae Pension -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                    <div class="h-40 bg-gray-200 bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/gps-proxy/ALd4DhHRohIHsAvpTCzo8-nD9Tb5Es2dIKGTaZJg2kTj9xEmkRLMwy_COEMNHCcpzAhfhqZa4z671NucuoTcRphNUppmEldlwi3vBVihGo4vQYnqN-xkLPf3GAtYUrfgSbMDGwc_xBdOJPfNNx_arYyu3AP-rIOfunOkTeOWIFRqwVWhx28kOcX77-nxsw=w324-h312-n-k-no');"></div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold text-gray-800"><a href="https://badayanolja.co.kr/" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline transition-colors">남해 바다야놀자펜션</a></h3>
+                            <span class="text-xs font-semibold bg-blue-100 text-blue-800 px-2 py-1 rounded">2박</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3">6.18 (목) 15:00 체크인</p>
+                        <p class="text-sm text-gray-600 line-clamp-2">눈앞에 펼쳐진 남해 바다! 1일 차 저녁 온 가족 프라이빗 바비큐 파티가 열릴 장소입니다.</p>
+                    </div>
+                </div>
+                <!-- Suncheon Pension -->
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition">
+                    <div class="h-40 bg-gray-200 bg-cover bg-center" style="background-image: url('data:image/jpeg;base64,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');"></div>
+                    <div class="p-5">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-lg font-bold text-gray-800"><a href="https://xn--9w4bo8fuzq.kr/" target="_blank" rel="noopener noreferrer" class="hover:text-primary hover:underline transition-colors">순천 쌍희재펜션</a></h3>
+                            <span class="text-xs font-semibold bg-green-100 text-green-800 px-2 py-1 rounded">1박</span>
+                        </div>
+                        <p class="text-sm text-gray-500 mb-3">6.20 (토) 15:00 체크인</p>
+                        <p class="text-sm text-gray-600 line-clamp-2">미국 조카들을 위한 K-컬처 체험! 고풍스러운 전통 한옥에서 보내는 특별한 하룻밤입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12 bg-white sticky top-[60px] z-40 shadow-sm border-b">
+            <div class="max-w-4xl mx-auto flex overflow-x-auto hide-scrollbar">
+                <button class="tab-btn active flex-1 py-4 px-2 text-center text-sm md:text-base font-medium text-gray-500 whitespace-nowrap transition" onclick="openTab(event, 'day1')">
+                    1일차<br><span class="text-xs font-normal">6.18(목)</span>
+                </button>
+                <button class="tab-btn flex-1 py-4 px-2 text-center text-sm md:text-base font-medium text-gray-500 whitespace-nowrap transition" onclick="openTab(event, 'day2')">
+                    2일차<br><span class="text-xs font-normal">6.19(금)</span>
+                </button>
+                <button class="tab-btn flex-1 py-4 px-2 text-center text-sm md:text-base font-medium text-gray-500 whitespace-nowrap transition" onclick="openTab(event, 'day3')">
+                    3일차<br><span class="text-xs font-normal">6.20(토)</span>
+                </button>
+                <button class="tab-btn flex-1 py-4 px-2 text-center text-sm md:text-base font-medium text-gray-500 whitespace-nowrap transition" onclick="openTab(event, 'day4')">
+                    4일차<br><span class="text-xs font-normal">6.21(일)</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="p-4 pt-8">
+            <div id="day1" class="tab-content active">
+                <h2 class="text-2xl font-bold text-primary mb-6">여유로운 시작, 남해로</h2>
+                
+                <div class="relative border-l-2 border-primary-light ml-3 space-y-8">
+                    <!-- Event -->
+                    <div class="relative pl-6">
+                        <div class="absolute -left-2 top-1 w-4 h-4 rounded-full bg-primary ring-4 ring-white"></div>
+                        <h4 class="text-sm text-gray-500 font-bold mb-1">09:00 ~ 13:00</h4>
+                        <h3 class="text-lg font-bold text-gray-800">인천 출발 & 대전 성심당 (DCC점)</h3>
+                        <p class="text-sm text-gray-600 mt-2">차량 2대로 이동. 주차가 편한 성심당 DCC점에서 빵을 구매하고 인근에서 가볍게 점심을 해결합니다.</p>
+                    </div>
+                    <!-- Event -->
+                    <div class="relative pl-6">
+                        <div class="absolute -left-2 top-1 w-4 h-4 rounded-full bg-primary ring-4 ring-white"></div>
+                        <h4 class="text-sm text-gray-500 font-bold mb-1">16:00 ~ 17:30</h4>
+                        <h3 class="text-lg font-bold text-gray-800">남해 도착 & 펜션 체크인</h3>
+                        <p class="text-sm text-gray-600 mt-2">바다야놀자펜션 입실. 장시간 이동하신 부모님이 먼저 편안하게 쉬실 수 있도록 돕습니다.</p>
+                    </div>
+                    <!-- Dinner -->
+                    <div class="relative pl-6 bg-orange-50 p-4 rounded-r-xl border-l-4 border-accent -ml-[2px]">
+                        <div class="absolute -left-[11px] top-4 w-4 h-4 rounded-full bg-accent ring-4 ring-white"></div>
+                        <h4 class="text-sm text-accent font-bold mb-1">17:30 ~ 19:00</h4>
+                        <h3 class="text-lg font-bold text-gray-800 flex items-center">🍽️ 첫날 만찬 <span class="text-xs bg-white text-gray-600 px-2 py-1 rounded-full border ml-2">선택</span></h3>
+                        <p class="text-sm text-gray-700 mt-2 font-medium">부모님의 기력 회복과 조카들의 입맛을 고려한 추천 메뉴:</p>
+                        <ul class="text-sm text-gray-600 mt-2 space-y-1 list-disc list-inside">
+                            <li><span class="font-semibold">남해 한우 구이/불고기:</span> 보물섬남해한우프라자 등</li>
+                            <li><span class="font-semibold">프리미엄 전복 특선:</span> 해사랑전복마을 (전복죽, 버터구이)</li>
+                            <li><span class="font-semibold">모둠 생선구이 정식:</span> 남해 그집 등</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="mt-8 bg-orange-50/40 rounded-2xl border border-orange-100 p-5 fade-in">
+                    <h3 class="text-lg font-bold text-orange-800 mb-4 flex items-center">
+                        <span class="text-2xl mr-2">🍱</span> 1일차 추천 맛집 가이드
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-orange-50 hover:shadow-md transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-gray-800 text-base">보물섬 남해 한우프라자</h4>
+                                <span class="text-xs bg-red-50 text-red-700 px-2 py-1 rounded-md font-semibold border border-red-100">저녁 추천</span>
+                            </div>
+                            <p class="text-sm text-gray-600 leading-relaxed">남해 마늘을 먹고 자란 고품질 한우 식당입니다. 주차장이 넓고 단차가 없어 거동이 불편하신 부모님 모시기에 최적입니다. 잇몸으로도 씹을 수 있는 부드러운 한우 구이와 10대 조카들이 환호할 달콤한 불고기 전골을 추천합니다.</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-orange-50 hover:shadow-md transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-gray-800 text-base">해사랑 전복마을</h4>
+                                <span class="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded-md font-semibold border border-blue-100">저녁 대안</span>
+                            </div>
+                            <p class="text-sm text-gray-600 leading-relaxed">아름다운 오션뷰를 감상하며 즐기는 전복 코스 요리 전문점입니다. 장거리 이동으로 지친 부모님의 기력 회복을 돕는 따뜻하고 깊은 맛의 전복죽과, 해산물이 낯선 조카들도 스테이크처럼 맛있게 먹을 수 있는 고소한 전복 버터구이가 일품입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="day2" class="tab-content">
+                <h2 class="text-2xl font-bold text-primary mb-6">남해 절경 감상과 이국적 정취</h2>
+                
+                <div class="relative border-l-2 border-primary-light ml-3 space-y-8">
+                    <!-- Event -->
+                    <div class="relative pl-6 bg-teal-50 p-4 rounded-r-xl border-l-4 border-primary -ml-[2px]">
+                        <div class="absolute -left-[11px] top-4 w-4 h-4 rounded-full bg-primary ring-4 ring-white"></div>
+                        <h4 class="text-sm text-primary font-bold mb-1">10:00 ~ 12:00</h4>
+                        <h3 class="text-lg font-bold text-gray-800">사천 바다케이블카 (크리스탈 캐빈)</h3>
+                        <p class="text-sm text-gray-600 mt-2">휠체어/지팡이 이동 용이. 걷지 않고 다도해 절경 감상 (부모님 추천 코스). 투명한 바닥은 조카들에게 훌륭한 액티비티!</p>
+                    </div>
+                    <!-- Lunch -->
+                    <div class="relative pl-6">
+                        <div class="absolute -left-2 top-1 w-4 h-4 rounded-full bg-gray-300 ring-4 ring-white"></div>
+                        <h4 class="text-sm text-gray-500 font-bold mb-1">12:30 ~ 14:00</h4>
+                        <h3 class="text-lg font-bold text-gray-800">점심 식사</h3>
+                        <p class="text-sm text-gray-600 mt-2">추천: 정서방(생선구이 가마솥밥), 달반늘(돌판 장어구이)</p>
+                    </div>
+                    <!-- Event (Two-Track) -->
+                    <div class="relative pl-6 bg-yellow-50 p-4 rounded-r-xl border-l-4 border-yellow-400 -ml-[2px]">
+                        <div class="absolute -left-[11px] top-4 w-4 h-4 rounded-full bg-yellow-400 ring-4 ring-white"></div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-0.5 rounded font-bold">투트랙 코스</span>
+                            <h4 class="text-sm text-gray-600 font-bold">14:30 ~ 16:30</h4>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800">남해 독일마을 & 파독전시관</h3>
+                        <div class="mt-2 text-sm grid grid-cols-2 gap-3">
+                            <div class="bg-white p-2 rounded shadow-sm border border-yellow-200">
+                                <span class="block font-bold text-gray-700 mb-1">👴👵 부모님</span>
+                                <span class="text-gray-600">오르막이므로 경치 좋은 <strong>카페에서 휴식</strong> (무알콜 음료)</span>
+                            </div>
+                            <div class="bg-white p-2 rounded shadow-sm border border-yellow-200">
+                                <span class="block font-bold text-gray-700 mb-1">👦👧 젊은 층</span>
+                                <span class="text-gray-600">독일식 소시지와 마을 전경을 배경으로 <strong>자유롭게 인생샷 촬영</strong></span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Dinner -->
+                    <div class="relative pl-6">
+                        <div class="absolute -left-2 top-1 w-4 h-4 rounded-full bg-accent ring-4 ring-white"></div>
+                        <h4 class="text-sm text-accent font-bold mb-1">18:00 ~ </h4>
+                        <h3 class="text-lg font-bold text-gray-800">🥩 하이라이트: 프라이빗 바비큐 파티</h3>
+                        <p class="text-sm text-gray-600 mt-2">펜션에서 진행. 근처 마트에서 흑돼지, 해산물 구입. 부모님은 식사 후 바로 취침 가능하며, 조카들은 K-바비큐 문화(쌈, 숯불)를 제대로 체험합니다.</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-orange-50/40 rounded-2xl border border-orange-100 p-5 fade-in">
+                    <h3 class="text-lg font-bold text-orange-800 mb-4 flex items-center">
+                        <span class="text-2xl mr-2">🍱</span> 2일차 추천 맛집 가이드
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-orange-50 hover:shadow-md transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-gray-800 text-base">사천 정서방 / 남해 달반늘</h4>
+                                <span class="text-xs bg-green-50 text-green-700 px-2 py-1 rounded-md font-semibold border border-green-100">점심 추천</span>
+                            </div>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-1"><strong>• 정서방(사천):</strong> 사천 케이블카 탑승 후 남해로 넘어가기 전 완벽한 동선입니다. 화덕 생선구이 가마솥밥과 아이들을 위한 바싹 불고기가 훌륭합니다.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed"><strong>• 달반늘(남해):</strong> 연기 없이 주방에서 완벽하게 구워져 따뜻한 돌판 위에 나오는 장어구이 전문점입니다. 어르신 보양식으로 최고입니다.</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-orange-50 hover:shadow-md transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-gray-800 text-base">독일마을 '완벽한 인생'</h4>
+                                <span class="text-xs bg-red-50 text-red-700 px-2 py-1 rounded-md font-semibold border border-red-100">외식 저녁(대안)</span>
+                            </div>
+                            <p class="text-sm text-gray-600 leading-relaxed">펜션 바비큐 대신 외식을 원하실 경우 최고의 선택입니다. 남해 바다가 보이는 넓은 매장에서 산더미처럼 쌓인 '메가 바비큐 플래터(슈바인학센, 폭립)'와 수제 맥주를 즐기며, 조카들에게 축제 같은 금요일 밤을 선물할 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="day3" class="tab-content">
+                <h2 class="text-2xl font-bold text-primary mb-6">초록빛 보성을 거쳐 한옥으로</h2>
+                
+                <div class="relative border-l-2 border-primary-light ml-3 space-y-8">
+                    <!-- Event (Two-Track) -->
+                    <div class="relative pl-6 bg-yellow-50 p-4 rounded-r-xl border-l-4 border-yellow-400 -ml-[2px]">
+                        <div class="absolute -left-[11px] top-4 w-4 h-4 rounded-full bg-yellow-400 ring-4 ring-white"></div>
+                        <div class="flex items-center gap-2 mb-1">
+                            <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-0.5 rounded font-bold">투트랙 코스</span>
+                            <h4 class="text-sm text-gray-600 font-bold">09:30 ~ 10:30</h4>
+                        </div>
+                        <h3 class="text-lg font-bold text-gray-800">다랭이마을 산책</h3>
+                        <p class="text-sm text-gray-600 mt-2"><strong>부모님 절대 하행 금지!</strong> 상단 전망대 카페에서 경치 감상. 조카들만 산책로 탐험.</p>
+                    </div>
+                    <!-- Event -->
+                    <div class="relative pl-6">
+                        <div class="absolute -left-2 top-1 w-4 h-4 rounded-full bg-primary ring-4 ring-white"></div>
+                        <h4 class="text-sm text-gray-500 font-bold mb-1">10:30 ~ 14:00</h4>
+                        <h3 class="text-lg font-bold text-gray-800">보성 이동 & 점심 식사</h3>
+                        <p class="text-sm text-gray-600 mt-2">경유지 맞춤 식당 추천: 삼대광양불고기집(광양) 또는 보성녹차떡갈비원조(보성). 모두 고기가 부드러워 어르신/아이들 완벽 만족.</p>
+                    </div>
+                    <!-- Event -->
+                    <div class="relative pl-6">
+                        <div class="absolute -left-2 top-1 w-4 h-4 rounded-full bg-gray-300 ring-4 ring-white"></div>
+                        <h4 class="text-sm text-gray-500 font-bold mb-1">14:00 ~ 15:30</h4>
+                        <h3 class="text-lg font-bold text-gray-800">보성 대한다원(녹차밭)</h3>
+                        <p class="text-sm text-gray-600 mt-2">부모님은 평지인 삼나무길만 산책 후 입구 카페 휴식. 조카들은 녹차밭 등반 및 사진 촬영.</p>
+                    </div>
+                    <!-- Check-in -->
+                    <div class="relative pl-6">
+                        <div class="absolute -left-2 top-1 w-4 h-4 rounded-full bg-gray-300 ring-4 ring-white"></div>
+                        <h4 class="text-sm text-gray-500 font-bold mb-1">16:00 ~ 17:00</h4>
+                        <h3 class="text-lg font-bold text-gray-800">순천 쌍희재펜션 체크인</h3>
+                        <p class="text-sm text-gray-600 mt-2">멋진 한옥 펜션 입실. 잠시 휴식을 취하며 한옥의 정취를 즐깁니다.</p>
+                    </div>
+                    <!-- Dinner -->
+                    <div class="relative pl-6 bg-orange-50 p-4 rounded-r-xl border-l-4 border-accent -ml-[2px]">
+                        <div class="absolute -left-[11px] top-4 w-4 h-4 rounded-full bg-accent ring-4 ring-white"></div>
+                        <h4 class="text-sm text-accent font-bold mb-1">18:00 ~ 19:30</h4>
+                        <h3 class="text-lg font-bold text-gray-800">👑 남도 한정식 만찬</h3>
+                        <p class="text-sm text-gray-600 mt-2">상다리가 부러지는 K-푸드의 진수. 조카들에게 시각적 충격을, 부모님께는 부드러운 영양식을 제공합니다. (추천: 대원식당, 명궁관 등)</p>
+                    </div>
+                </div>
+
+                <div class="mt-8 bg-orange-50/40 rounded-2xl border border-orange-100 p-5 fade-in">
+                    <h3 class="text-lg font-bold text-orange-800 mb-4 flex items-center">
+                        <span class="text-2xl mr-2">🍱</span> 3일차 추천 맛집 가이드
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-orange-50 hover:shadow-md transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-gray-800 text-base">보성녹차떡갈비원조</h4>
+                                <span class="text-xs bg-green-50 text-green-700 px-2 py-1 rounded-md font-semibold border border-green-100">점심 추천</span>
+                            </div>
+                            <p class="text-sm text-gray-600 leading-relaxed">보성 녹차밭 인근의 유명 맛집입니다. 뼈를 바를 필요 없이 포크로 툭툭 자를 수 있을 만큼 부드러운 '한우/한돈 반반 떡갈비' 정식은 부모님의 치아 부담을 덜어드리고, 아이들의 입맛도 완벽하게 저격합니다.</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-orange-50 hover:shadow-md transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-gray-800 text-base">순천 대원식당 / 명궁관</h4>
+                                <span class="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded-md font-semibold border border-purple-100">저녁 한정식</span>
+                            </div>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-1"><strong>• 대원식당:</strong> 빈방에 앉아 있으면 수십 가지 반찬이 세팅된 상을 통째로 들고 들어오는 압도적인 퍼포먼스의 60년 전통 남도 한정식입니다.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed"><strong>• 명궁관:</strong> 멋진 한옥 정원을 품고 있어 가족 사진 찍기 좋으며, 코스처럼 정갈하고 슴슴한 요리들이 대접받는 느낌을 주는 고품격 한정식입니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="day4" class="tab-content">
+                <h2 class="text-2xl font-bold text-primary mb-6">세계적인 정원 산책 후 귀경</h2>
+                
+                <div class="relative border-l-2 border-primary-light ml-3 space-y-8">
+                    <!-- Breakfast -->
+                    <div class="relative pl-6">
+                        <div class="absolute -left-2 top-1 w-4 h-4 rounded-full bg-gray-300 ring-4 ring-white"></div>
+                        <h4 class="text-sm text-gray-500 font-bold mb-1">08:30 ~ 09:30</h4>
+                        <h3 class="text-lg font-bold text-gray-800">기분 좋은 아침 식사</h3>
+                        <p class="text-sm text-gray-600 mt-2">속을 편안하게 깨우는 맑은 탕. (추천: 나주곰탕 진미, 현대옥 콩나물국밥 등)</p>
+                    </div>
+                    <!-- Event -->
+                    <div class="relative pl-6 bg-teal-50 p-4 rounded-r-xl border-l-4 border-primary -ml-[2px]">
+                        <div class="absolute -left-[11px] top-4 w-4 h-4 rounded-full bg-primary ring-4 ring-white"></div>
+                        <h4 class="text-sm text-primary font-bold mb-1">10:00 ~ 12:00</h4>
+                        <h3 class="text-lg font-bold text-gray-800">순천만 국가정원</h3>
+                        <p class="text-sm text-gray-600 mt-2">규모가 큽니다. 부모님 체력을 위해 입구 휠체어 대여 또는 <strong>관람차(트램) 탑승 필수!</strong> 편안하게 둘러보세요.</p>
+                    </div>
+                    <!-- Lunch & Departure -->
+                    <div class="relative pl-6">
+                        <div class="absolute -left-2 top-1 w-4 h-4 rounded-full bg-primary ring-4 ring-white"></div>
+                        <h4 class="text-sm text-gray-500 font-bold mb-1">12:00 ~ 18:00</h4>
+                        <h3 class="text-lg font-bold text-gray-800">귀경길 스페셜 점심 & 인천 도착</h3>
+                        <p class="text-sm text-gray-600 mt-2">오후 6시 전 도착 목표. 점심 추천:<br>
+                            - 순천 출발 전: 참조은시골집 (약선 보쌈)<br>
+                            - 이동 중: 고궁 본점 (전주 비빔밥의 정수)
                         </p>
                     </div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Visual Gallery Section -->
-    <section class="py-16 px-6 bg-white border-t border-slate-100">
-        <div class="container mx-auto max-w-6xl">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <!-- Image 1 -->
-                <div class="aspect-video overflow-hidden rounded-2xl shadow-md border border-slate-100 bg-slate-50">
-                    <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=900" 
-                         alt="[의자에 앉아있는 남자와 여자]" 
-                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                         onerror="this.src='https://via.placeholder.com/600x400?text=AISH+Consultation'">
-                </div>
-                <!-- Image 2 -->
-                <div class="aspect-video overflow-hidden rounded-2xl shadow-md border border-slate-100 bg-slate-50">
-                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=900&auto=format&fit=crop&q=80&ixlib=rb-4.1.0" 
-                         alt="[교육 현장 디지털 이미지]" 
-                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                         onerror="this.src='https://via.placeholder.com/600x400?text=Digital+Education'">
-                </div>
-                <!-- Image 3 -->
-                <div class="aspect-video overflow-hidden rounded-2xl shadow-md border border-slate-100 bg-slate-50">
-                    <img src="https://media.istockphoto.com/id/2208516349/ko/%EC%82%AC%EC%A7%84/%ED%95%99%EA%B5%90%EC%97%90%EC%84%9C-%EC%98%81%EC%96%B4%EB%A5%BC-%EA%B0%80%EB%A5%B4%EC%B9%98%EB%8A%94-%EC%97%AC%EA%B5%90%EC%82%AC.webp?a=1&b=1&s=612x612&w=0&k=20&c=buN6YxcwVpYhqywGtwmhkO06A_ivsNcaNORkrUtjrDo=" 
-                         alt="[전문 교육 진행 현장]" 
-                         class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-                         onerror="this.src='https://via.placeholder.com/600x400?text=Expert+Instruction'">
+                <div class="mt-8 bg-orange-50/40 rounded-2xl border border-orange-100 p-5 fade-in">
+                    <h3 class="text-lg font-bold text-orange-800 mb-4 flex items-center">
+                        <span class="text-2xl mr-2">🍱</span> 4일차 추천 맛집 가이드
+                    </h3>
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-orange-50 hover:shadow-md transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-gray-800 text-base">나주곰탕 진미 / 건봉국밥</h4>
+                                <span class="text-xs bg-teal-50 text-teal-700 px-2 py-1 rounded-md font-semibold border border-teal-100">아침 국물요리</span>
+                            </div>
+                            <p class="text-sm text-gray-600 leading-relaxed mb-1"><strong>• 나주곰탕 진미:</strong> 맑고 진한 한우 고깃국으로, 맵지 않고 소화가 잘 되어 아침 식사로 완벽합니다.</p>
+                            <p class="text-sm text-gray-600 leading-relaxed"><strong>• 건봉국밥:</strong> 전국구 명성을 가진 순천 아랫장의 명물입니다. 우유처럼 뽀얗고 구수한 국물과 부드러운 살코기로 든든하게 아침을 시작합니다.</p>
+                        </div>
+                        <div class="bg-white rounded-xl p-4 shadow-sm border border-orange-50 hover:shadow-md transition">
+                            <div class="flex justify-between items-start mb-2">
+                                <h4 class="font-bold text-gray-800 text-base">전주 고궁 본점 (전주)</h4>
+                                <span class="text-xs bg-green-50 text-green-700 px-2 py-1 rounded-md font-semibold border border-green-100">귀경길 점심</span>
+                            </div>
+                            <p class="text-sm text-gray-600 leading-relaxed">인천으로 올라가는 귀경길(고속도로) 완벽한 중간 기착지입니다. 미국 조카들에게 K-푸드의 대명사인 '오리지널 전주비빔밥'을 박물관 같은 웅장한 식당에서 대접해 보세요. 부모님을 위한 따뜻하고 부드러운 '돌솥비빔밥'도 훌륭합니다.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <!-- Vocabulary for Visual Assets -->
-            <div class="mt-8 text-center">
-                <p class="text-xs text-slate-400">
-                    <strong>비주얼 에셋(Visual Assets):</strong> 교육의 신뢰도와 현장감을 높이기 위해 사용되는 시각 자료(이미지, 영상 등)를 의미합니다.
-                </p>
-            </div>
-        </div>
-    </section>
+        </section>
+        
+        <!-- Emergency Info -->
+        <section class="mt-8 px-4 pb-12">
+             <div class="bg-gray-800 text-white rounded-xl p-5 shadow-md">
+                <h3 class="text-lg font-bold mb-2 flex items-center">
+                    <span class="mr-2">🚨</span> 여행자 필수 체크!
+                </h3>
+                <ul class="text-sm text-gray-300 space-y-2 list-disc list-inside">
+                    <li>89세 부모님 <strong>상비약 및 파스</strong> 꼭 챙기기</li>
+                    <li>조카들 시차 적응 및 물갈이 대비 비상약 (소화제 등) 준비</li>
+                    <li>오후 3~4시 부모님 체력 저하 시, 차량 1대로 <strong>먼저 숙소 귀가</strong> 적극 활용</li>
+                </ul>
+             </div>
+        </section>
 
-    <!-- Footer -->
-    <footer class="py-12 bg-white border-t border-slate-200 text-center">
-        <p class="text-slate-400 text-sm">© 2026 AISH. All Rights Reserved. 본 과정은 AISH 중급 회원을 대상으로 하는 한정 교육입니다.</p>
-    </footer>
+        <!-- More Details Link -->
+        <section class="mt-4 px-4 pb-12">
+            <a href="https://url.kr/h26rr1" target="_blank" rel="noopener noreferrer" class="block w-full bg-white rounded-xl shadow-sm border-2 border-primary border-dashed p-5 text-center hover:bg-primary-light transition-colors duration-300 flex flex-col items-center justify-center group">
+                <span class="text-2xl mb-2 group-hover:scale-110 transition-transform">🔗</span>
+                <h3 class="text-lg font-bold text-primary mb-1 group-hover:text-teal-800">우리가족 여행 가이드 상세보기</h3>
+                <p class="text-sm text-gray-500 mb-2">클릭하여 전체 일정표와 상세 정보를 확인하세요</p>
+                <span class="text-xs font-medium text-teal-600 bg-teal-50 px-3 py-1 rounded-full">https://url.kr/h26rr1</span>
+            </a>
+        </section>
 
-    <!-- Custom Modal for Alerts -->
-    <div id="modal" class="fixed inset-0 bg-black/60 z-[100] hidden flex items-center justify-center px-4">
-        <div class="bg-white rounded-2xl p-8 max-w-sm w-full text-center">
-            <h3 id="modalTitle" class="text-xl font-bold mb-4">알림</h3>
-            <p id="modalMessage" class="text-slate-600 mb-6"></p>
-            <button onclick="closeModal()" class="w-full bg-slate-900 text-white font-bold py-3 rounded-lg">확인</button>
-        </div>
-    </div>
+    </main>
 
     <script>
-        // 중요: 아래 URL에 본인이 생성한 '구글 앱스 스크립트 웹 앱 URL'을 넣어야 실제 동작합니다.
-        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz_vya_9wbo5HJamV_hc7-SFxtKa3_IJFstD9oOwrgSPijnNTXZqb0xrRQhFhzIB6_o/exec';
-
-        document.getElementById('applyForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const submitBtn = document.getElementById('submitBtn');
-            const btnText = document.getElementById('btnText');
-            const btnSpinner = document.getElementById('btnSpinner');
-
-            submitBtn.disabled = true;
-            btnText.innerText = "데이터 전송 중...";
-            btnSpinner.style.display = "block";
-
-            const formData = new FormData(this);
-            const data = {
-                name: formData.get('name'),
-                phone: formData.get('phone'),
-                email: formData.get('email'),
-                generation: formData.get('generation'),
-                course: formData.get('course'),
-                admin_email: 'cmart008@gmail.com'
-            };
-
-            try {
-                const response = await fetch(SCRIPT_URL, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    cache: 'no-cache',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                showModal('신청 완료', `${data.name}님의 신청 정보가 구글 시트에 기록되었습니다. 관리자에게도 확인 메일이 발송되었으니 잠시만 기다려 주십시오.`);
-                this.reset();
-
-            } catch (error) {
-                console.error("전송 오류 발생:", error);
-                showModal('오류 안내', '데이터 전송 중 문제가 발생했습니다. 관리자 주소(cmart008@gmail.com)로 직접 문의 부탁드립니다.');
-            } finally {
-                submitBtn.disabled = false;
-                btnText.innerText = "전문가 과정 신청하기";
-                btnSpinner.style.display = "none";
+        function openTab(evt, dayName) {
+            // Hide all tab content
+            var tabcontent = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
             }
-        });
 
-        function showModal(title, message) {
-            document.getElementById('modalTitle').innerText = title;
-            document.getElementById('modalMessage').innerText = message;
-            document.getElementById('modal').classList.remove('hidden');
-        }
+            // Remove active class from all buttons
+            var tablinks = document.getElementsByClassName("tab-btn");
+            for (var i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
 
-        function closeModal() {
-            document.getElementById('modal').classList.add('hidden');
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(dayName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+            
+            // Smooth scroll to top of tabs if clicked on mobile to avoid jumping
+            const y = document.querySelector('.sticky').getBoundingClientRect().top + window.scrollY - 60;
+            window.scrollTo({top: y, behavior: 'smooth'});
         }
     </script>
 </body>
